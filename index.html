@@ -10,304 +10,83 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-<style>
-:root{
-  --navy:#0c1e36;
-  --navy-2:#13294a;
-  --gold:#c6a15b;
-  --gold-dark:#a9843c;
-  --ivory:#f8f5ef;
-  --stone:#ece6da;
-  --ink:#1c2430;
-  --muted:#667085;
-  --white:#fff;
-  --radius:14px;
-  --shadow:0 18px 40px rgba(12,30,54,.14);
-  --serif:"Playfair Display",Georgia,serif;
-  --sans:"Inter",Arial,sans-serif;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:76px}
-body{font-family:var(--sans);color:var(--ink);background:var(--white);line-height:1.65;overflow-x:hidden}
-img{display:block;max-width:100%}
-a{color:inherit;text-decoration:none}
-ul{list-style:none}
-.container{width:min(1200px,92%);margin-inline:auto}
-section{padding:96px 0}
-
-/* ---------- Typography helpers ---------- */
-.eyebrow{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:14px}
-.eyebrow::before{content:"";display:inline-block;width:34px;height:2px;background:var(--gold);vertical-align:middle;margin-right:12px}
-h2.title{font-family:var(--serif);font-weight:700;color:var(--navy);font-size:clamp(2rem,4vw,3.1rem);line-height:1.15;margin-bottom:18px}
-.lead{color:var(--muted);font-size:1.06rem;max-width:62ch}
-.center{text-align:center}
-.center .lead{margin-inline:auto}
-.center .eyebrow::before{display:none}
-
-.btn{display:inline-block;padding:15px 32px;border-radius:50px;font-weight:600;font-size:.92rem;letter-spacing:.04em;transition:.25s;cursor:pointer;border:2px solid transparent}
-.btn-gold{background:var(--gold);color:var(--navy)}
-.btn-gold:hover{background:var(--gold-dark);color:#fff;transform:translateY(-2px)}
-.btn-line{border-color:rgba(255,255,255,.75);color:#fff}
-.btn-line:hover{background:#fff;color:var(--navy)}
-
-/* ---------- Reveal on scroll ---------- */
-.reveal{animation:rise .9s ease both}
-@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
-
-/* ---------- NAVBAR ---------- */
-.nav{position:fixed;inset:0 0 auto 0;z-index:100;background:rgba(12,30,54,.97);box-shadow:0 6px 24px rgba(0,0,0,.25);padding:8px 0}
-.nav .container{display:flex;align-items:center;justify-content:space-between}
-.navtoggle{display:none}
-.brand{background:#fff;border-radius:10px;padding:6px 12px;display:flex;align-items:center}
-.brand img{height:38px;width:auto}
-.menu{display:flex;gap:26px;align-items:center}
-.menu a{color:#fff;font-size:.86rem;font-weight:500;letter-spacing:.04em;position:relative;padding:6px 0}
-.menu a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--gold);transition:.25s}
-.menu a:hover::after{width:100%}
-.menu .cta{background:var(--gold);color:var(--navy);padding:10px 22px;border-radius:50px;font-weight:600}
-.menu .cta::after{display:none}
-.burger{display:none;color:#fff;font-size:2rem;cursor:pointer;line-height:1}
-
-/* ---------- HERO ---------- */
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;color:#fff;padding:140px 0 120px;
-  background:linear-gradient(105deg,rgba(12,30,54,.92) 0%,rgba(12,30,54,.72) 48%,rgba(12,30,54,.25) 100%),url("images/hero-livingroom.jpg") center/cover no-repeat}
-.hero h1{font-family:var(--serif);font-weight:800;font-size:clamp(2.6rem,6.2vw,5.2rem);line-height:1.08;max-width:15ch;margin-bottom:22px}
-.hero h1 em{color:var(--gold);font-style:normal}
-.hero p{max-width:56ch;font-size:1.12rem;color:#e4e9f1;margin-bottom:34px}
-.hero .btns{display:flex;flex-wrap:wrap;gap:14px}
-.hero .tagline{font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;font-weight:600}
-
-.quick{position:absolute;left:50%;bottom:-62px;transform:translateX(-50%);width:min(1100px,92%);background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);display:grid;grid-template-columns:repeat(4,1fr);z-index:5}
-.quick div{padding:26px 28px;border-right:1px solid #eee;text-align:center}
-.quick div:last-child{border:0}
-.quick strong{display:block;font-family:var(--serif);font-size:2rem;color:var(--navy);line-height:1.1}
-.quick span{font-size:.82rem;color:var(--muted);letter-spacing:.04em}
-
-/* ---------- ABOUT ---------- */
-.about{padding-top:170px;background:var(--white)}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
-.photo-stack{position:relative}
-.photo-stack .main{border-radius:var(--radius);box-shadow:var(--shadow);width:100%;height:520px;object-fit:cover}
-.photo-stack .badge{position:absolute;right:-24px;bottom:-28px;background:var(--navy);color:#fff;padding:26px 30px;border-radius:var(--radius);border-left:5px solid var(--gold);max-width:230px}
-.badge strong{display:block;font-family:var(--serif);font-size:2.4rem;color:var(--gold);line-height:1}
-.badge span{font-size:.86rem;color:#d6dde9}
-.about p{margin-bottom:18px;color:#46505f}
-.tick{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:12px 24px}
-.tick li{position:relative;padding-left:30px;font-weight:500;font-size:.95rem}
-.tick li::before{content:"✓";position:absolute;left:0;top:0;width:21px;height:21px;border-radius:50%;background:var(--gold);color:var(--navy);font-size:.72rem;display:grid;place-items:center;font-weight:700;margin-top:3px}
-
-/* ---------- SERVICES ---------- */
-.services{background:var(--ivory)}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:52px}
-.card{background:#fff;border-radius:var(--radius);padding:34px 30px;box-shadow:0 8px 24px rgba(12,30,54,.07);border-bottom:4px solid transparent;transition:.3s}
-.card:hover{transform:translateY(-8px);border-color:var(--gold);box-shadow:var(--shadow)}
-.card .ico{width:56px;height:56px;border-radius:14px;background:var(--navy);color:var(--gold);display:grid;place-items:center;font-size:1.5rem;margin-bottom:20px}
-.card h3{font-family:var(--serif);font-size:1.3rem;color:var(--navy);margin-bottom:8px}
-.card p{font-size:.95rem;color:var(--muted)}
-
-/* ---------- VISION / SPIRIT ---------- */
-.vision{background:var(--navy);color:#fff;position:relative;overflow:hidden}
-.vision::before{content:"";position:absolute;inset:0;background:url("images/crane-bg.jpg") center/cover;opacity:.22}
-.vision .container{position:relative}
-.vision h2.title{color:#fff}
-.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:10px}
-.vs{border-radius:var(--radius);overflow:hidden;background:var(--navy-2);box-shadow:0 20px 50px rgba(0,0,0,.35)}
-.vs img{width:100%;height:270px;object-fit:cover}
-.vs div{padding:34px}
-.vs h3{font-family:var(--serif);font-size:2rem;color:var(--gold);margin-bottom:12px}
-.vs p{color:#d6dde9}
-
-/* ---------- PERSONNEL / TEAM ---------- */
-.personnel{background:#fff}
-.split.rev{grid-template-columns:1.1fr .9fr}
-.personnel p{color:#46505f;margin-bottom:16px}
-.personnel .pic{border-radius:var(--radius);box-shadow:var(--shadow);width:100%;height:560px;object-fit:cover}
-.team{background:var(--ivory)}
-.roles{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:46px}
-.role{background:#fff;padding:30px;border-radius:var(--radius);text-align:center;box-shadow:0 8px 22px rgba(12,30,54,.07);transition:.3s}
-.role:hover{background:var(--navy);color:#fff;transform:translateY(-6px)}
-.role:hover h4{color:var(--gold)}
-.role .ico{font-size:2rem;margin-bottom:10px}
-.role h4{font-family:var(--serif);font-size:1.2rem;color:var(--navy);transition:.3s}
-.role p{font-size:.88rem;opacity:.8;margin-top:4px}
-.team-banner{width:100%;height:380px;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow);margin-top:46px}
-.team-pics{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
-.team-pics img{width:100%;height:200px;object-fit:cover;border-radius:12px}
-
-/* ---------- ORGANISATION STRUCTURE ---------- */
-.org{background:#fff}
-.chart{margin-top:52px;display:flex;flex-direction:column;align-items:center}
-.n{background:var(--navy);color:#fff;padding:13px 24px;border-radius:10px;font-weight:600;font-size:.92rem;text-align:center;min-width:170px;box-shadow:0 6px 16px rgba(12,30,54,.18)}
-.n.top{background:var(--gold);color:var(--navy);font-size:1rem}
-.n.mid{background:var(--navy-2)}
-.n.leaf{background:var(--ivory);color:var(--navy);border:1.5px solid var(--gold);box-shadow:none}
-.line{width:2px;height:28px;background:var(--gold)}
-.row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-.two{display:flex;gap:70px;align-items:flex-start;justify-content:center;flex-wrap:wrap;margin-top:0}
-.branch{display:flex;flex-direction:column;align-items:center}
-
-/* ---------- EXPERIENCE ---------- */
-.experience{background:var(--stone)}
-.exp-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
-.exp-grid p{color:#46505f;margin-bottom:16px}
-.exp-imgs{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.exp-imgs img{width:100%;height:230px;object-fit:cover;border-radius:12px;box-shadow:var(--shadow)}
-.exp-imgs img:first-child{grid-column:1/3;height:270px}
-
-/* ---------- PROJECTS ---------- */
-.projects{background:#fff}
-.fr{position:absolute;opacity:0;pointer-events:none}
-.filters{display:flex;gap:10px;justify-content:center;margin:34px 0 40px;flex-wrap:wrap}
-.filters label{border:1.5px solid var(--navy);background:none;color:var(--navy);padding:9px 22px;border-radius:50px;font-weight:600;font-size:.85rem;cursor:pointer;transition:.25s}
-.filters label:hover,
-#f-all:checked ~ .filters label[for="f-all"],
-#f-res:checked ~ .filters label[for="f-res"],
-#f-com:checked ~ .filters label[for="f-com"],
-#f-site:checked ~ .filters label[for="f-site"]{background:var(--navy);color:#fff}
-#f-res:checked ~ .gallery .g:not([data-c="residential"]),
-#f-com:checked ~ .gallery .g:not([data-c="commercial"]),
-#f-site:checked ~ .gallery .g:not([data-c="site"]){display:none}
-.gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:230px;gap:16px}
-.g{position:relative;overflow:hidden;border-radius:12px;cursor:pointer}
-.g.big{grid-column:span 2;grid-row:span 2}
-.g.wide{grid-column:span 2}
-.g img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
-.g:hover img{transform:scale(1.08)}
-.g span{position:absolute;inset:auto 0 0 0;padding:44px 20px 16px;color:#fff;font-weight:600;font-size:.95rem;background:linear-gradient(transparent,rgba(12,30,54,.88));transform:translateY(100%);transition:.35s}
-.g:hover span{transform:none}
-
-/* ---------- COMPLIANCE ---------- */
-.compliance{background:var(--navy);color:#fff}
-.compliance h2.title{color:#fff}
-.compliance .lead{color:#c7d0de}
-.comp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
-.comp{background:var(--navy-2);border:1px solid rgba(198,161,91,.35);border-radius:var(--radius);padding:34px;text-align:center}
-.comp strong{display:block;font-family:var(--serif);font-size:2.6rem;color:var(--gold);line-height:1.1;margin-bottom:6px}
-.comp h4{font-size:1rem;margin-bottom:6px}
-.comp p{font-size:.88rem;color:#c7d0de}
-
-/* ---------- CLIENTS ---------- */
-.clients{background:linear-gradient(rgba(248,245,239,.9),rgba(248,245,239,.9)),url("images/clients-bg.jpg") center/cover fixed}
-.cl-group{margin-top:44px}
-.cl-group h3{font-size:.85rem;letter-spacing:.2em;color:var(--gold-dark);text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:16px}
-.cl-group h3::after{content:"";flex:1;height:1px;background:#d8cfbb}
-.logos{display:flex;flex-wrap:wrap;gap:18px}
-.logos div{background:#fff;border-radius:12px;padding:18px 26px;display:grid;place-items:center;min-width:170px;height:106px;box-shadow:0 6px 18px rgba(12,30,54,.06);transition:.3s}
-.logos div:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
-.logos img{max-height:70px;max-width:150px;width:auto;object-fit:contain}
-
-/* ---------- CONTACT ---------- */
-.contact{background:linear-gradient(rgba(12,30,54,.82),rgba(12,30,54,.86)),url("images/contact.jpg") center/cover;color:#fff}
-.contact h2.title{color:#fff}
-.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:start}
-.contact .lead{color:#c7d0de}
-.info{margin-top:34px;display:grid;gap:22px}
-.info li{display:flex;gap:18px;align-items:center}
-.info .ic{width:50px;height:50px;border-radius:50%;background:var(--gold);color:var(--navy);display:grid;place-items:center;font-size:1.2rem;flex:none}
-.info small{display:block;color:#aab6c8;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase}
-.info a:hover{color:var(--gold)}
-form{background:#fff;color:var(--ink);padding:40px;border-radius:var(--radius);box-shadow:0 24px 60px rgba(0,0,0,.35);display:grid;gap:16px}
-form h3{font-family:var(--serif);font-size:1.6rem;color:var(--navy);margin-bottom:4px}
-.f2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-input,select,textarea{width:100%;padding:14px 16px;border:1.5px solid #dcd6c8;border-radius:10px;font:inherit;background:var(--ivory);transition:.2s}
-input:focus,select:focus,textarea:focus{outline:0;border-color:var(--gold);background:#fff}
-textarea{min-height:120px;resize:vertical}
-form .btn{width:100%;border:0;font-family:var(--sans)}
-
-/* ---------- FOOTER ---------- */
-footer{background:#07111f;color:#9aa6b8;padding:34px 0;text-align:center;font-size:.88rem}
-footer strong{color:var(--gold)}
-
-/* ---------- RESPONSIVE ---------- */
-@media(max-width:1000px){
-  .split,.split.rev,.exp-grid,.contact-grid,.vs-grid{grid-template-columns:1fr;gap:50px}
-  .cards,.roles,.comp-grid{grid-template-columns:1fr 1fr}
-  .gallery{grid-template-columns:repeat(2,1fr)}
-  .team-pics{grid-template-columns:1fr 1fr}
-  .quick{grid-template-columns:1fr 1fr;bottom:-110px}
-  .about{padding-top:230px}
-  .photo-stack .badge{right:12px}
-}
-@media(max-width:760px){
-  section{padding:70px 0}
-  .burger{display:block}
-  .menu{position:absolute;top:100%;left:0;right:0;background:var(--navy);flex-direction:column;gap:0;display:none;padding:10px 0}
-  .navtoggle:checked ~ .menu{display:flex}
-  .menu a{padding:14px 6%;width:100%}
-  .menu .cta{border-radius:0;background:none;color:var(--gold)}
-  .cards,.roles,.comp-grid,.tick,.f2{grid-template-columns:1fr}
-  .quick{grid-template-columns:1fr 1fr}
-  .quick div{padding:18px 10px}
-  .quick strong{font-size:1.5rem}
-  .gallery{grid-template-columns:1fr;grid-auto-rows:240px}
-  .g.big,.g.wide{grid-column:auto;grid-row:auto}
-  .photo-stack .main,.personnel .pic{height:340px}
-  .g span{transform:none}
-  form{padding:26px}
-}
-</style>
+<link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
+<body class="no-js">
 
 <!-- ===================== NAVBAR ===================== -->
 <header class="nav" id="nav">
   <div class="container">
     <a href="#home" class="brand"><img src="images/logo.png" alt="BAPTA Engineering logo" /></a>
     <input type="checkbox" id="navtoggle" class="navtoggle" />
-    <label for="navtoggle" class="burger" aria-label="Open menu">&#9776;</label>
     <nav class="menu" id="menu">
-      <a href="#about">About Us</a>
-      <a href="#vision">Our Vision</a>
-      <a href="#personnel">Personnel</a>
-      <a href="#structure">Structure</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#clients">Clients</a>
-      <a href="#contact" class="cta">Contact Us</a>
+      <a href="#about" data-i18n="nav_about">About Us</a>
+      <a href="#vision" data-i18n="nav_vision">Our Vision</a>
+      <a href="#founder" data-i18n="nav_founder">Founder</a>
+      <a href="#structure" data-i18n="nav_structure">Structure</a>
+      <a href="#projects" data-i18n="nav_projects">Projects</a>
+      <a href="#site" data-i18n="nav_site">Site Photos</a>
+      <a href="#clients" data-i18n="nav_clients">Clients</a>
+      <a href="#contact" class="cta" data-i18n="nav_contact">Contact Us</a>
     </nav>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" class="active">EN</button>
+        <button type="button" data-lang="sw">SW</button>
+      </div>
+      <label for="navtoggle" class="burger" aria-label="Open menu">&#9776;</label>
+    </div>
   </div>
 </header>
 
 <!-- ===================== HERO ===================== -->
 <section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <span class="shape s1"></span><span class="shape s2"></span><span class="shape s3"></span>
   <div class="container">
-    <div class="tagline">Building &bull; Civil Works &bull; Property Development</div>
-    <h1>We build homes and spaces <em>you keep for life.</em></h1>
-    <p>BAPTA Engineering is a Building and Civil Engineering contractor based in Arusha, now growing into property development. Our spirit: "Retaining Customers for Life."</p>
+    <div class="tagline" data-i18n="hero_tag">Building &bull; Civil Works &bull; Property Development</div>
+    <h1 data-i18n="hero_h1">We build homes and spaces <em>you keep for life.</em></h1>
+    <p data-i18n="hero_p">BAPTA Engineering is a Building and Civil Engineering contractor based in Arusha, now growing into property development. Our spirit: "Retaining Customers for Life."</p>
     <div class="btns">
-      <a href="#projects" class="btn btn-gold">View Our Projects</a>
-      <a href="#contact" class="btn btn-line">Get In Touch</a>
+      <a href="#projects" class="btn btn-gold" data-i18n="hero_b1">View Our Projects</a>
+      <a href="#" class="btn btn-wa wa-link" target="_blank" rel="noopener">
+        <svg viewBox="0 0 32 32"><path d="M16 3C8.8 3 3 8.8 3 16c0 2.3.6 4.5 1.7 6.4L3 29l6.8-1.8A13 13 0 0 0 16 29c7.2 0 13-5.8 13-13S23.200 3 16 3zm0 23.700c-2 0-3.900-.6-5.500-1.600l-.4-.2-4 1 1.100-3.900-.3-.4A10.600 10.600 0 1 1 16 26.700zm5.800-7.900c-.3-.2-1.900-.9-2.200-1-.3-.1-.5-.2-.7.200-.2.300-.8 1-1 1.200-.2.200-.4.200-.7.100-.3-.2-1.400-.5-2.600-1.600-1-.9-1.600-1.900-1.800-2.200-.2-.3 0-.5.100-.7l.5-.5c.1-.2.200-.3.300-.5.100-.2.100-.4 0-.6-.1-.2-.7-1.700-1-2.300-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.100-.9.400-.3.300-1.200 1.200-1.200 2.800s1.200 3.300 1.400 3.500c.2.200 2.400 3.700 5.800 5.100.8.400 1.500.600 2 .8.8.3 1.600.2 2.200.1.700-.1 1.900-.8 2.200-1.500.3-.8.300-1.400.2-1.500-.1-.2-.3-.3-.6-.4z"/></svg>
+        <span data-i18n="btn_wa">Chat on WhatsApp</span>
+      </a>
+      <a href="tel:+255757755174" class="btn btn-line">
+        <svg viewBox="0 0 24 24"><path d="M6.600 10.800a15 15 0 0 0 6.600 6.600l2.200-2.200a1 1 0 0 1 1-.25c1.100.4 2.300.6 3.600.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.500a1 1 0 0 1 1 1c0 1.300.2 2.500.6 3.600a1 1 0 0 1-.25 1z"/></svg>
+        <span data-i18n="btn_call">Call Now</span>
+      </a>
     </div>
   </div>
 
   <div class="quick">
-    <div><strong>2025</strong><span>Founded in Arusha</span></div>
-    <div><strong>Class 4</strong><span>CRB – Buildings</span></div>
-    <div><strong>Class V</strong><span>CRB – Civil Works</span></div>
-    <div><strong>13</strong><span>Client Organisations</span></div>
-
+    <div><strong>2025</strong><span data-i18n="q1">Founded in Arusha</span></div>
+    <div><strong>Class 4</strong><span data-i18n="q2">CRB – Buildings</span></div>
+    <div><strong>Class V</strong><span data-i18n="q3">CRB – Civil Works</span></div>
+    <div><strong><span class="count" data-count="13">13</span></strong><span data-i18n="q4">Client Organisations</span></div>
   </div>
 </section>
 
 <!-- ===================== ABOUT ===================== -->
 <section class="about" id="about">
   <div class="container split">
-    <div class="photo-stack reveal">
+    <div class="photo-stack reveal left">
       <img class="main" src="images/blueprint.jpg" alt="3D floor plan on blueprints" />
-      <div class="badge"><strong>CRB</strong><span>Registered by the national Contractor Registration Board</span></div>
+      <div class="badge"><strong>CRB</strong><span data-i18n="about_badge">Registered by the national Contractor Registration Board</span></div>
     </div>
-    <div class="reveal">
-      <span class="eyebrow">About Company</span>
-      <h2 class="title">Credible performance, rising stage by stage.</h2>
-      <p>BAPTA engineering was originally founded in Arusha in 2025 as a Building and Civil Engineering Contractors and was registered by the national Contractor Registration Board (CRB) in Class Five.</p>
-      <p>Since then, it has been involved mainly in building maintenance, rehabilitations, new construction and occasionally road repairs and supply of building materials and as a result of its credible performance it has been rising stage by stage until now is in Class Four for Buildings and Class V for Civil Works. BAPTA is now also venturing into property development business.</p>
+    <div class="reveal right">
+      <span class="eyebrow" data-i18n="about_eye">About Company</span>
+      <h2 class="title" data-i18n="about_title">Credible performance, rising stage by stage.</h2>
+      <p data-i18n="about_p1">BAPTA engineering was originally founded in Arusha in 2025 as a Building and Civil Engineering Contractors and was registered by the national Contractor Registration Board (CRB) in Class Five.</p>
+      <p data-i18n="about_p2">Since then, it has been involved mainly in building maintenance, rehabilitations, new construction and occasionally road repairs and supply of building materials and as a result of its credible performance it has been rising stage by stage until now is in Class Four for Buildings and Class V for Civil Works. BAPTA is now also venturing into property development business.</p>
       <ul class="tick">
-        <li>Building maintenance</li>
-        <li>Rehabilitations</li>
-        <li>New construction</li>
-        <li>Road repairs</li>
-        <li>Supply of building materials</li>
-        <li>Property development</li>
+        <li data-i18n="t1">Building maintenance</li>
+        <li data-i18n="t2">Rehabilitations</li>
+        <li data-i18n="t3">New construction</li>
+        <li data-i18n="t4">Road repairs</li>
+        <li data-i18n="t5">Supply of building materials</li>
+        <li data-i18n="t6">Property development</li>
       </ul>
     </div>
   </div>
@@ -316,16 +95,16 @@ footer strong{color:var(--gold)}
 <!-- ===================== SERVICES ===================== -->
 <section class="services" id="services">
   <div class="container center">
-    <span class="eyebrow">What We Do</span>
-    <h2 class="title">A complete construction package</h2>
-    <p class="lead">From bathroom installations to complete renovations and structural extensions, every project is completed on time, on budget and to the highest standards.</p>
+    <span class="eyebrow reveal" data-i18n="sv_eye">What We Do</span>
+    <h2 class="title reveal" data-i18n="sv_title">A complete construction package</h2>
+    <p class="lead reveal" data-i18n="sv_lead">From bathroom installations to complete renovations and structural extensions, every project is completed on time, on budget and to the highest standards.</p>
     <div class="cards">
-      <div class="card reveal"><div class="ico">🏢</div><h3>New Construction</h3><p>Residential, office and commercial buildings delivered from start to finish.</p></div>
-      <div class="card reveal"><div class="ico">🛠️</div><h3>Maintenance &amp; Rehabilitation</h3><p>Contract maintenance work, office renovations and commercial renovations.</p></div>
-      <div class="card reveal"><div class="ico">🛣️</div><h3>Road Works &amp; Bridges</h3><p>Road repairs and civil works carried out under CRB Class V registration.</p></div>
-      <div class="card reveal"><div class="ico">🏡</div><h3>Property Development</h3><p>BAPTA is now venturing into property development business.</p></div>
-      <div class="card reveal"><div class="ico">🧱</div><h3>Building Materials</h3><p>Supply of quality building materials for projects large and small.</p></div>
-      <div class="card reveal"><div class="ico">📐</div><h3>Design &amp; Project Management</h3><p>Every site is managed from start to finish by a designated site manager.</p></div>
+      <div class="card reveal" style="--d:.0s"><div class="ico">🏢</div><h3 data-i18n="c1h">New Construction</h3><p data-i18n="c1p">Residential, office and commercial buildings delivered from start to finish.</p></div>
+      <div class="card reveal" style="--d:.1s"><div class="ico">🛠️</div><h3 data-i18n="c2h">Maintenance &amp; Rehabilitation</h3><p data-i18n="c2p">Contract maintenance work, office renovations and commercial renovations.</p></div>
+      <div class="card reveal" style="--d:.2s"><div class="ico">🛣️</div><h3 data-i18n="c3h">Road Works &amp; Bridges</h3><p data-i18n="c3p">Road repairs and civil works carried out under CRB Class V registration.</p></div>
+      <div class="card reveal" style="--d:.0s"><div class="ico">🏡</div><h3 data-i18n="c4h">Property Development</h3><p data-i18n="c4p">BAPTA is now venturing into property development business.</p></div>
+      <div class="card reveal" style="--d:.1s"><div class="ico">🧱</div><h3 data-i18n="c5h">Building Materials</h3><p data-i18n="c5p">Supply of quality building materials for projects large and small.</p></div>
+      <div class="card reveal" style="--d:.2s"><div class="ico">📐</div><h3 data-i18n="c6h">Design &amp; Project Management</h3><p data-i18n="c6p">Every site is managed from start to finish by a designated site manager.</p></div>
     </div>
   </div>
 </section>
@@ -333,25 +112,58 @@ footer strong{color:var(--gold)}
 <!-- ===================== VISION & SPIRIT ===================== -->
 <section class="vision" id="vision">
   <div class="container">
-    <div class="center" style="margin-bottom:48px">
-      <span class="eyebrow">Who We Are</span>
-      <h2 class="title">Our Vision &amp; Our Spirit</h2>
+    <div class="center reveal" style="margin-bottom:48px">
+      <span class="eyebrow" data-i18n="vi_eye">Who We Are</span>
+      <h2 class="title" data-i18n="vi_title">Our Vision &amp; Our Spirit</h2>
     </div>
     <div class="vs-grid">
-      <article class="vs reveal">
-        <img src="images/vision-roller.jpg" alt="Road roller on site" />
-        <div>
-          <h3>Our Vision</h3>
-          <p>Everything that we are and everything that we do shall be encompassed within the spirit of 'Retaining Customers for Life. No single thing that we do is so urgent or important that we cannot take a moment to consider Customer satisfaction, Health &amp; Safety and the Environment</p>
+      <article class="vs reveal left">
+        <div class="imgwrap"><img src="images/vision-roller.jpg" alt="Road roller on site" /></div>
+        <div class="txt">
+          <h3 data-i18n="vi_h1">Our Vision</h3>
+          <p data-i18n="vi_p1">Everything that we are and everything that we do shall be encompassed within the spirit of 'Retaining Customers for Life. No single thing that we do is so urgent or important that we cannot take a moment to consider Customer satisfaction, Health &amp; Safety and the Environment</p>
         </div>
       </article>
-      <article class="vs reveal">
-        <img src="images/spirit-site.jpg" alt="Construction site" />
-        <div>
-          <h3>Our Spirit</h3>
-          <p>Across all our services – from refurbishment to new build or construct- we adopt a personal, responsible approach, laying the foundations for a lasting relationship in every project we undertake.</p>
+      <article class="vs reveal right">
+        <div class="imgwrap"><img src="images/spirit-site.jpg" alt="Construction site" /></div>
+        <div class="txt">
+          <h3 data-i18n="vi_h2">Our Spirit</h3>
+          <p data-i18n="vi_p2">Across all our services – from refurbishment to new build or construct- we adopt a personal, responsible approach, laying the foundations for a lasting relationship in every project we undertake.</p>
         </div>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOUNDER ===================== -->
+<section class="founder" id="founder">
+  <div class="founder-bg"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="container founder-grid">
+    <div class="f-photo reveal left">
+      <div class="f-orbit"></div>
+      <div class="f-frame">
+        <img src="images/founder.jpg" alt="Emmanuel Baptister Kilas, Founder of BAPTA Engineering" />
+        <div class="f-shine"></div>
+        <div class="f-name"><small data-i18n="f_tag">Founder &amp; Director</small><strong>Emmanuel Baptister Kilas</strong></div>
+      </div>
+      <div class="f-logo"><img src="images/logo.png" alt="BAPTA Engineering logo" /></div>
+    </div>
+    <div class="reveal right">
+      <span class="eyebrow" data-i18n="f_eye">Message from the Founder</span>
+      <h2 class="title" data-i18n="f_title">Built on trust, delivered with pride.</h2>
+      <p class="f-quote" data-i18n="f_quote">"We do not just put up walls and roofs. We build lasting relationships. When a client trusts us with their home or business, that trust is the most valuable thing we construct."</p>
+      <p class="f-text" data-i18n="f_p1">BAPTA Engineering began in Arusha with a simple promise: do honest work, finish on time, and keep the site safe and tidy. Stage by stage, our credible performance has grown the company from Class Five to Class Four for Buildings and Class V for Civil Works.</p>
+      <p class="f-text" data-i18n="f_p2">Today we are expanding into property development, always guided by one spirit: Retaining Customers for Life.</p>
+      <div class="f-vals">
+        <span data-i18n="fv1">Integrity</span>
+        <span data-i18n="fv2">Quality</span>
+        <span data-i18n="fv3">Safety</span>
+        <span data-i18n="fv4">On Time, On Budget</span>
+      </div>
+      <div class="f-sign">
+        <span class="fl"></span>
+        <div><strong>Emmanuel Baptister Kilas</strong><small data-i18n="f_role">Founder &amp; Director</small></div>
+      </div>
     </div>
   </div>
 </section>
@@ -359,33 +171,33 @@ footer strong{color:var(--gold)}
 <!-- ===================== PERSONNEL ===================== -->
 <section class="personnel" id="personnel">
   <div class="container split rev">
-    <div class="reveal">
-      <span class="eyebrow">Personnel</span>
-      <h2 class="title">Experienced people, strong project management</h2>
-      <p>BAPTA’s services are provided by a highly experienced and educated, in-house staff of licensed professionals, project managers, and technicians supplemented by a consortium of highly qualified professional consultants from within and outside of the country.</p>
-      <p>Consortium consultants include Architects Engineers, Quantity Surveyors, Human Resource, Specialists, and a Matrix of Technicians with professional qualifications, experience, and reputation, combined with their versatility and ability to provide service in a timely manner.</p>
-      <p>This unique blending of resources through the application of strong project management skills is strength for the company’s success.</p>
+    <div class="reveal left">
+      <span class="eyebrow" data-i18n="p_eye">Personnel</span>
+      <h2 class="title" data-i18n="p_title">Experienced people, strong project management</h2>
+      <p data-i18n="p_p1">BAPTA’s services are provided by a highly experienced and educated, in-house staff of licensed professionals, project managers, and technicians supplemented by a consortium of highly qualified professional consultants from within and outside of the country.</p>
+      <p data-i18n="p_p2">Consortium consultants include Architects Engineers, Quantity Surveyors, Human Resource, Specialists, and a Matrix of Technicians with professional qualifications, experience, and reputation, combined with their versatility and ability to provide service in a timely manner.</p>
+      <p data-i18n="p_p3">This unique blending of resources through the application of strong project management skills is strength for the company’s success.</p>
     </div>
-    <img class="pic reveal" src="images/personnel.jpg" alt="Modern meeting area" />
+    <img class="pic reveal right" src="images/personnel.jpg" alt="Modern meeting area" />
   </div>
 </section>
 
 <!-- ===================== OUR TEAM ===================== -->
 <section class="team" id="team">
   <div class="container center">
-    <span class="eyebrow">Our Team</span>
-    <h2 class="title">The consortium behind every build</h2>
-    <p class="lead">Licensed professionals, project managers and technicians, supported by consultants from within and outside the country.</p>
+    <span class="eyebrow reveal" data-i18n="tm_eye">Our Team</span>
+    <h2 class="title reveal" data-i18n="tm_title">The consortium behind every build</h2>
+    <p class="lead reveal" data-i18n="tm_lead">Licensed professionals, project managers and technicians, supported by consultants from within and outside the country.</p>
     <div class="roles">
-      <div class="role reveal"><div class="ico">📐</div><h4>Architects</h4><p>Design that matches the client’s vision</p></div>
-      <div class="role reveal"><div class="ico">⚙️</div><h4>Engineers</h4><p>Structural, civil and building engineering</p></div>
-      <div class="role reveal"><div class="ico">📊</div><h4>Quantity Surveyors</h4><p>Costing and budget control</p></div>
-      <div class="role reveal"><div class="ico">🤝</div><h4>Human Resource</h4><p>Skilled and safe workforce</p></div>
-      <div class="role reveal"><div class="ico">🎓</div><h4>Specialists</h4><p>Specialist works and services</p></div>
-      <div class="role reveal"><div class="ico">🔧</div><h4>Technicians</h4><p>A matrix of qualified technicians</p></div>
+      <div class="role reveal" style="--d:0s"><div class="ico">📐</div><h4 data-i18n="r1h">Architects</h4><p data-i18n="r1p">Design that matches the client’s vision</p></div>
+      <div class="role reveal" style="--d:.1s"><div class="ico">⚙️</div><h4 data-i18n="r2h">Engineers</h4><p data-i18n="r2p">Structural, civil and building engineering</p></div>
+      <div class="role reveal" style="--d:.2s"><div class="ico">📊</div><h4 data-i18n="r3h">Quantity Surveyors</h4><p data-i18n="r3p">Costing and budget control</p></div>
+      <div class="role reveal" style="--d:0s"><div class="ico">🤝</div><h4 data-i18n="r4h">Human Resource</h4><p data-i18n="r4p">Skilled and safe workforce</p></div>
+      <div class="role reveal" style="--d:.1s"><div class="ico">🎓</div><h4 data-i18n="r5h">Specialists</h4><p data-i18n="r5p">Specialist works and services</p></div>
+      <div class="role reveal" style="--d:.2s"><div class="ico">🔧</div><h4 data-i18n="r6h">Technicians</h4><p data-i18n="r6p">A matrix of qualified technicians</p></div>
     </div>
-    <img class="team-banner" src="images/office-interior.jpg" alt="BAPTA modern office interior" />
-    <div class="team-pics">
+    <img class="team-banner reveal zoom" src="images/office-interior.jpg" alt="BAPTA modern office interior" />
+    <div class="team-pics reveal">
       <img src="images/project-5.jpg" alt="Steel structure under construction" />
       <img src="images/project-6.jpg" alt="Foundation works" />
       <img src="images/project-7.jpg" alt="Multi-storey building" />
@@ -397,42 +209,41 @@ footer strong{color:var(--gold)}
 <!-- ===================== ORGANISATION STRUCTURE ===================== -->
 <section class="org" id="structure">
   <div class="container center">
-    <span class="eyebrow">Organisation Structure</span>
-    <h2 class="title">How BAPTA is organised</h2>
+    <span class="eyebrow reveal" data-i18n="o_eye">Organisation Structure</span>
+    <h2 class="title reveal" data-i18n="o_title">How BAPTA is organised</h2>
 
-    <div class="chart">
-      <div class="n top">Board of Directors</div>
+    <div class="chart reveal">
+      <div class="n top" data-i18n="o_board">Board of Directors</div>
       <div class="line"></div>
-      <div class="n mid">President &amp; CEO</div>
+      <div class="n mid" data-i18n="o_ceo">President &amp; CEO</div>
       <div class="line"></div>
       <div class="row">
-        <div class="n mid">President &amp; CEO</div>
-        <div class="n mid">Human Resorce</div>
-        <div class="n mid">Accounts</div>
+        <div class="n mid" data-i18n="o_hr">Human Resource</div>
+        <div class="n mid" data-i18n="o_acc">Accounts</div>
       </div>
       <div class="line"></div>
       <div class="two">
         <div class="branch">
-          <div class="n">Managing Director</div>
+          <div class="n" data-i18n="o_md">Managing Director</div>
           <div class="line"></div>
-          <div class="row"><div class="n mid">Operations</div><div class="n mid">Procurement</div></div>
+          <div class="row"><div class="n mid" data-i18n="o_ops">Operations</div><div class="n mid" data-i18n="o_proc">Procurement</div></div>
           <div class="line"></div>
-          <div class="n mid">Construction</div>
+          <div class="n mid" data-i18n="o_con">Construction</div>
           <div class="line"></div>
           <div class="row">
-            <div class="n leaf">Civil Works</div>
-            <div class="n leaf">Services &amp; Specialist Works</div>
-            <div class="n leaf">Building Works</div>
+            <div class="n leaf" data-i18n="o_civil">Civil Works</div>
+            <div class="n leaf" data-i18n="o_spec">Services &amp; Specialist Works</div>
+            <div class="n leaf" data-i18n="o_bld">Building Works</div>
           </div>
         </div>
         <div class="branch">
-          <div class="n">Managing Director</div>
+          <div class="n" data-i18n="o_md">Managing Director</div>
           <div class="line"></div>
-          <div class="n mid">Property Development</div>
+          <div class="n mid" data-i18n="o_pd">Property Development</div>
           <div class="line"></div>
           <div class="row">
-            <div class="n leaf">Design &amp; Development</div>
-            <div class="n leaf">Marketing &amp; Sales</div>
+            <div class="n leaf" data-i18n="o_dd">Design &amp; Development</div>
+            <div class="n leaf" data-i18n="o_ms">Marketing &amp; Sales</div>
           </div>
         </div>
       </div>
@@ -443,14 +254,14 @@ footer strong{color:var(--gold)}
 <!-- ===================== COMPANY EXPERIENCE ===================== -->
 <section class="experience" id="experience">
   <div class="container exp-grid">
-    <div class="reveal">
-      <span class="eyebrow">Company Experience</span>
-      <h2 class="title">An unparalleled reputation for a wide range of services</h2>
-      <p>As a major national construction and building contractors, Bapta Engineering has built an unparalleled reputation for a wide range of services. From contract maintenance work to new construction projects, road works, bridges, office renovations to commercial renovations; Bapta Engineering has been doing these works for the past seven years now through many construction companies that have been gaining experience and eventually obtaining the company registration, with that experience we create an environment that perfectly matches our client’s vision.</p>
-      <p>We offer a complete construction package to our clients. All sites are managed by projects from start to finish and a designated site manager oversees the work of our technicians. Our comprehensive approach ensures that every project from bathroom installations to complete renovations and structural extensions is completed on time and on budget and to the highest standards.</p>
-      <p>As serious builders, we believe that a tidy workplace is as important as the final finish and we strive to keep our workplace tidy and safe.</p>
+    <div class="reveal left">
+      <span class="eyebrow" data-i18n="e_eye">Company Experience</span>
+      <h2 class="title" data-i18n="e_title">An unparalleled reputation for a wide range of services</h2>
+      <p data-i18n="e_p1">As a major national construction and building contractors, Bapta Engineering has built an unparalleled reputation for a wide range of services. From contract maintenance work to new construction projects, road works, bridges, office renovations to commercial renovations; Bapta Engineering has been doing these works for the past seven years now through many construction companies that have been gaining experience and eventually obtaining the company registration, with that experience we create an environment that perfectly matches our client’s vision.</p>
+      <p data-i18n="e_p2">We offer a complete construction package to our clients. All sites are managed by projects from start to finish and a designated site manager oversees the work of our technicians. Our comprehensive approach ensures that every project from bathroom installations to complete renovations and structural extensions is completed on time and on budget and to the highest standards.</p>
+      <p data-i18n="e_p3">As serious builders, we believe that a tidy workplace is as important as the final finish and we strive to keep our workplace tidy and safe.</p>
     </div>
-    <div class="exp-imgs reveal">
+    <div class="exp-imgs reveal right">
       <img src="images/exp-1.jpg" alt="Modern kitchen" />
       <img src="images/exp-2.jpg" alt="Office lounge" />
       <img src="images/exp-3.jpg" alt="Open-plan office" />
@@ -461,34 +272,60 @@ footer strong{color:var(--gold)}
 <!-- ===================== PROJECTS ===================== -->
 <section class="projects" id="projects">
   <div class="container center">
-    <span class="eyebrow">Our Projects</span>
-    <h2 class="title">Work we are proud of</h2>
-    <p class="lead">A look at residential, commercial and civil works delivered and under construction.</p>
+    <span class="eyebrow reveal" data-i18n="pr_eye">Our Projects</span>
+    <h2 class="title reveal" data-i18n="pr_title">Work we are proud of</h2>
+    <p class="lead reveal" data-i18n="pr_lead">A look at residential, commercial and civil works delivered and under construction.</p>
 
     <input type="radio" name="f" id="f-all" class="fr" checked />
     <input type="radio" name="f" id="f-res" class="fr" />
     <input type="radio" name="f" id="f-com" class="fr" />
     <input type="radio" name="f" id="f-site" class="fr" />
     <div class="filters">
-      <label for="f-all">All</label>
-      <label for="f-res">Residential</label>
-      <label for="f-com">Commercial</label>
-      <label for="f-site">On Site</label>
+      <label for="f-all" data-i18n="fl_all">All</label>
+      <label for="f-res" data-i18n="fl_res">Residential</label>
+      <label for="f-com" data-i18n="fl_com">Commercial</label>
+      <label for="f-site" data-i18n="fl_site">On Site</label>
     </div>
 
     <div class="gallery">
-      <div class="g big" data-c="residential"><img src="images/project-1.jpg" alt="Two-storey residential building" /><span>Two-Storey Residential Building</span></div>
-      <div class="g" data-c="site"><img src="images/project-2.jpg" alt="Foundation works" /><span>Foundation Works</span></div>
-      <div class="g" data-c="residential"><img src="images/project-3.jpg" alt="Residential house" /><span>Family Residence</span></div>
-      <div class="g wide" data-c="commercial"><img src="images/project-4.jpg" alt="Office and warehouse complex" /><span>Office &amp; Warehouse Complex</span></div>
-      <div class="g" data-c="site"><img src="images/project-5.jpg" alt="Steel structure" /><span>Steel Structure</span></div>
-      <div class="g" data-c="site"><img src="images/project-6.jpg" alt="Stone foundation" /><span>Stone Foundation</span></div>
-      <div class="g" data-c="commercial"><img src="images/project-7.jpg" alt="Multi-storey building" /><span>Multi-Storey Building</span></div>
-      <div class="g" data-c="commercial"><img src="images/project-8.jpg" alt="Washroom interiors" /><span>Washroom Installations</span></div>
-      <div class="g big" data-c="commercial"><img src="images/exp-7.jpg" alt="Commercial tower building" /><span>Commercial Building</span></div>
-      <div class="g" data-c="commercial"><img src="images/exp-6.jpg" alt="Commercial building" /><span>Commercial Building Exterior</span></div>
-      <div class="g" data-c="commercial"><img src="images/exp-4.jpg" alt="Interior fit-out" /><span>Interior Fit-Out</span></div>
-      <div class="g wide" data-c="site"><img src="images/exp-5.jpg" alt="Excavation and site survey" /><span>Excavation &amp; Site Survey</span></div>
+      <div class="g big" data-c="residential"><img src="images/project-1.jpg" alt="Two-storey residential building" /><span data-i18n="g1">Two-Storey Residential Building</span></div>
+      <div class="g" data-c="site"><img src="images/project-2.jpg" alt="Foundation works" /><span data-i18n="g2">Foundation Works</span></div>
+      <div class="g" data-c="residential"><img src="images/project-3.jpg" alt="Residential house" /><span data-i18n="g3">Family Residence</span></div>
+      <div class="g wide" data-c="commercial"><img src="images/project-4.jpg" alt="Office and warehouse complex" /><span data-i18n="g4">Office &amp; Warehouse Complex</span></div>
+      <div class="g" data-c="site"><img src="images/project-5.jpg" alt="Steel structure" /><span data-i18n="g5">Steel Structure</span></div>
+      <div class="g" data-c="site"><img src="images/project-6.jpg" alt="Stone foundation" /><span data-i18n="g6">Stone Foundation</span></div>
+      <div class="g" data-c="commercial"><img src="images/project-7.jpg" alt="Multi-storey building" /><span data-i18n="g7">Multi-Storey Building</span></div>
+      <div class="g" data-c="commercial"><img src="images/project-8.jpg" alt="Washroom interiors" /><span data-i18n="g8">Washroom Installations</span></div>
+      <div class="g big" data-c="commercial"><img src="images/exp-7.jpg" alt="Commercial tower building" /><span data-i18n="g9">Commercial Building</span></div>
+      <div class="g" data-c="commercial"><img src="images/exp-6.jpg" alt="Commercial building" /><span data-i18n="g10">Commercial Building Exterior</span></div>
+      <div class="g" data-c="commercial"><img src="images/exp-4.jpg" alt="Interior fit-out" /><span data-i18n="g11">Interior Fit-Out</span></div>
+      <div class="g wide" data-c="site"><img src="images/exp-5.jpg" alt="Excavation and site survey" /><span data-i18n="g12">Excavation &amp; Site Survey</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LIVE SITE PHOTOS ===================== -->
+<section class="sitephotos" id="site">
+  <div class="container center">
+    <span class="live reveal" data-i18n="sp_live">Live from site</span><br />
+    <span class="eyebrow reveal" data-i18n="sp_eye">Site Progress</span>
+    <h2 class="title reveal" data-i18n="sp_title">See our work taking shape</h2>
+    <p class="lead reveal" data-i18n="sp_lead">Real photos from our current building site. Tap any photo to view it full size.</p>
+
+    <div class="sp-grid" id="spGrid">
+      <figure class="sp reveal zoom" style="--d:0s"><img src="images/site-1.jpg" alt="Completed white building with iron-sheet roof" loading="lazy" /><figcaption data-i18n="sp1">Main building – walls, windows and roofing complete</figcaption></figure>
+      <figure class="sp reveal zoom" style="--d:.1s"><img src="images/site-2.jpg" alt="Annex building with ladder and workers" loading="lazy" /><figcaption data-i18n="sp2">Annex building – finishing works in progress</figcaption></figure>
+      <figure class="sp reveal zoom" style="--d:.15s"><img src="images/site-3.jpg" alt="Narrow walkway between building and wall" loading="lazy" /><figcaption data-i18n="sp3">Smooth plastered walls and painted finish</figcaption></figure>
+      <figure class="sp reveal zoom" style="--d:.2s"><img src="images/site-4.jpg" alt="5000 litre water tank on concrete stand" loading="lazy" /><figcaption data-i18n="sp4">Water tank stand – 5000 litre storage</figcaption></figure>
+      <figure class="sp reveal zoom" style="--d:.25s"><img src="images/site-5.jpg" alt="Timber ceiling and concrete plinths" loading="lazy" /><figcaption data-i18n="sp5">Timber-lined eaves and concrete plinths</figcaption></figure>
+      <figure class="sp reveal zoom" style="--d:.3s"><img src="images/site-6.jpg" alt="Compound with perimeter wall and solar street lights" loading="lazy" /><figcaption data-i18n="sp6">Compound with perimeter wall and solar lighting</figcaption></figure>
+    </div>
+
+    <div class="quick-actions reveal" style="justify-content:center;margin-top:44px">
+      <a href="#" class="btn btn-wa wa-link" target="_blank" rel="noopener" data-wa="visit">
+        <svg viewBox="0 0 32 32"><path d="M16 3C8.8 3 3 8.8 3 16c0 2.3.6 4.5 1.7 6.4L3 29l6.8-1.8A13 13 0 0 0 16 29c7.2 0 13-5.8 13-13S23.200 3 16 3zm0 23.700c-2 0-3.900-.6-5.500-1.600l-.4-.2-4 1 1.100-3.900-.3-.4A10.600 10.600 0 1 1 16 26.700zm5.800-7.900c-.3-.2-1.900-.9-2.200-1-.3-.1-.5-.2-.7.200-.2.300-.8 1-1 1.200-.2.200-.4.200-.7.100-.3-.2-1.400-.5-2.600-1.600-1-.9-1.600-1.900-1.800-2.200-.2-.3 0-.5.100-.7l.5-.5c.1-.2.200-.3.300-.5.100-.2.100-.4 0-.6-.1-.2-.7-1.700-1-2.300-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.100-.9.400-.3.300-1.200 1.200-1.200 2.800s1.200 3.300 1.400 3.500c.2.200 2.400 3.700 5.800 5.100.8.400 1.500.600 2 .8.8.3 1.600.2 2.200.1.700-.1 1.900-.8 2.200-1.500.3-.8.300-1.400.2-1.500-.1-.2-.3-.3-.6-.4z"/></svg>
+        <span data-i18n="sp_cta">Book a site visit on WhatsApp</span>
+      </a>
     </div>
   </div>
 </section>
@@ -496,13 +333,13 @@ footer strong{color:var(--gold)}
 <!-- ===================== COMPLIANCE ===================== -->
 <section class="compliance" id="compliance">
   <div class="container center">
-    <span class="eyebrow">Compliance</span>
-    <h2 class="title">Registered, licensed and accountable</h2>
-    <p class="lead">BAPTA is registered by the national Contractor Registration Board (CRB) and rises stage by stage on the strength of credible performance.</p>
+    <span class="eyebrow reveal" data-i18n="cp_eye">Compliance</span>
+    <h2 class="title reveal" data-i18n="cp_title">Registered, licensed and accountable</h2>
+    <p class="lead reveal" data-i18n="cp_lead">BAPTA is registered by the national Contractor Registration Board (CRB) and rises stage by stage on the strength of credible performance.</p>
     <div class="comp-grid">
-      <div class="comp reveal"><strong>CRB</strong><h4>Contractor Registration Board</h4><p>Registered nationally, starting in Class Five.</p></div>
-      <div class="comp reveal"><strong>Class 4</strong><h4>Buildings</h4><p>Current CRB class for building works.</p></div>
-      <div class="comp reveal"><strong>Class V</strong><h4>Civil Works</h4><p>Current CRB class for civil works.</p></div>
+      <div class="comp reveal" style="--d:0s"><strong>CRB</strong><h4 data-i18n="cp1h">Contractor Registration Board</h4><p data-i18n="cp1p">Registered nationally, starting in Class Five.</p></div>
+      <div class="comp reveal" style="--d:.12s"><strong>Class 4</strong><h4 data-i18n="cp2h">Buildings</h4><p data-i18n="cp2p">Current CRB class for building works.</p></div>
+      <div class="comp reveal" style="--d:.24s"><strong>Class V</strong><h4 data-i18n="cp3h">Civil Works</h4><p data-i18n="cp3p">Current CRB class for civil works.</p></div>
     </div>
   </div>
 </section>
@@ -510,13 +347,13 @@ footer strong{color:var(--gold)}
 <!-- ===================== CLIENTS ===================== -->
 <section class="clients" id="clients">
   <div class="container">
-    <div class="center">
-      <span class="eyebrow">Our Clients</span>
-      <h2 class="title">Trusted by leading institutions</h2>
+    <div class="center reveal">
+      <span class="eyebrow" data-i18n="cl_eye">Our Clients</span>
+      <h2 class="title" data-i18n="cl_title">Trusted by leading institutions</h2>
     </div>
 
-    <div class="cl-group">
-      <h3>Government</h3>
+    <div class="cl-group reveal">
+      <h3 data-i18n="cl_g1">Government</h3>
       <div class="logos">
         <div><img src="images/client-043.png" alt="Parliament of Tanzania" /></div>
         <div><img src="images/client-045.png" alt="Government institution" /></div>
@@ -526,8 +363,8 @@ footer strong{color:var(--gold)}
         <div><img src="images/client-053.png" alt="Tanzania Revenue Authority" /></div>
       </div>
     </div>
-    <div class="cl-group">
-      <h3>International Institutions</h3>
+    <div class="cl-group reveal">
+      <h3 data-i18n="cl_g2">International Institutions</h3>
       <div class="logos">
         <div><img src="images/client-055.png" alt="UNOPS" /></div>
         <div><img src="images/client-056.png" alt="European Union" /></div>
@@ -535,8 +372,8 @@ footer strong{color:var(--gold)}
         <div><img src="images/client-065.png" alt="Jhpiego" /></div>
       </div>
     </div>
-    <div class="cl-group">
-      <h3>Utility / Energy</h3>
+    <div class="cl-group reveal">
+      <h3 data-i18n="cl_g3">Utility / Energy</h3>
       <div class="logos">
         <div><img src="images/client-059.png" alt="TANESCO" /></div>
         <div><img src="images/client-061.png" alt="TTCL" /></div>
@@ -549,40 +386,77 @@ footer strong{color:var(--gold)}
 <!-- ===================== CONTACT ===================== -->
 <section class="contact" id="contact">
   <div class="container contact-grid">
-    <div>
-      <span class="eyebrow">Contact Us</span>
-      <h2 class="title">Let’s build your next home or project</h2>
-      <p class="lead">Tell us what you have in mind and we will get back to you.</p>
+    <div class="reveal left">
+      <span class="eyebrow" data-i18n="ct_eye">Contact Us</span>
+      <h2 class="title" data-i18n="ct_title">Let’s build your next home or project</h2>
+      <p class="lead" data-i18n="ct_lead">Tell us what you have in mind and we will get back to you.</p>
+
+      <div class="quick-actions">
+        <a href="#" class="btn btn-wa wa-link" target="_blank" rel="noopener">
+          <svg viewBox="0 0 32 32"><path d="M16 3C8.8 3 3 8.8 3 16c0 2.3.6 4.5 1.7 6.4L3 29l6.8-1.8A13 13 0 0 0 16 29c7.2 0 13-5.8 13-13S23.200 3 16 3zm0 23.700c-2 0-3.900-.6-5.500-1.600l-.4-.2-4 1 1.100-3.900-.3-.4A10.600 10.600 0 1 1 16 26.700zm5.800-7.900c-.3-.2-1.900-.9-2.200-1-.3-.1-.5-.2-.7.200-.2.300-.8 1-1 1.200-.2.200-.4.200-.7.100-.3-.2-1.400-.5-2.600-1.600-1-.9-1.600-1.900-1.800-2.200-.2-.3 0-.5.100-.7l.5-.5c.1-.2.200-.3.300-.5.100-.2.100-.4 0-.6-.1-.2-.7-1.700-1-2.300-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.100-.9.400-.3.300-1.200 1.200-1.200 2.800s1.200 3.300 1.400 3.500c.2.200 2.400 3.700 5.800 5.100.8.400 1.500.600 2 .8.8.3 1.600.2 2.200.1.700-.1 1.900-.8 2.200-1.500.3-.8.300-1.400.2-1.500-.1-.2-.3-.3-.6-.4z"/></svg>
+          <span data-i18n="btn_wa">Chat on WhatsApp</span>
+        </a>
+        <a href="tel:+255757755174" class="btn btn-call">
+          <svg viewBox="0 0 24 24"><path d="M6.600 10.800a15 15 0 0 0 6.600 6.600l2.200-2.200a1 1 0 0 1 1-.25c1.100.4 2.300.6 3.600.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.500a1 1 0 0 1 1 1c0 1.300.2 2.500.6 3.600a1 1 0 0 1-.25 1z"/></svg>
+          <span data-i18n="btn_call">Call Now</span>
+        </a>
+      </div>
+
       <ul class="info">
-        <li><span class="ic">📞</span><div><small>Phone</small><a href="tel:+255757755174">+255 ... ... ...</a></div></li>
-        <li><span class="ic">✉️</span><div><small>Email</small><a href="mailto:baptaengineering25@yahoo.com">..........................</a></div></li>
-        <li><span class="ic">📍</span><div><small>Address</small>Kisongo Streets Plot No. 6&amp;7. Near sokoni</div></li>
+        <li><span class="ic">📞</span><div><small data-i18n="ph">Phone</small><a href="tel:+255757755174">+255 757 755 174</a></div></li>
+        <li><span class="ic">✉️</span><div><small data-i18n="em">Email</small><a href="mailto:emmanuel@baptaengineering.com">emmanuel@baptaengineering.com</a></div></li>
+        <li><span class="ic">📍</span><div><small data-i18n="ad">Address</small><span data-i18n="ad_v">Kisongo Streets Plot No. 6&amp;7. Near sokoni</span></div></li>
       </ul>
     </div>
 
-    <form action="mailto:baptaengineering25@yahoo.com?subject=Website%20Enquiry" method="post" enctype="text/plain">
-      <h3>Send us a message</h3>
+    <form id="contactForm" class="reveal right">
+      <h3 data-i18n="fm_h">Send us a message</h3>
       <div class="f2">
-        <input type="text" name="name" placeholder="Your name" required />
-        <input type="tel" name="phone" placeholder="Phone number" />
+        <input type="text" name="name" id="fName" placeholder="Your name" data-i18n-ph="fm_name" required />
+        <input type="tel" name="phone" id="fPhone" placeholder="Phone number" data-i18n-ph="fm_phone" />
       </div>
-      <input type="email" name="email" placeholder="Email address" required />
-      <select name="service">
-        <option>New construction</option>
-        <option>Renovation / maintenance</option>
-        <option>Road works</option>
-        <option>Property development</option>
-        <option>Building materials</option>
+      <input type="email" name="email" id="fEmail" placeholder="Email address" data-i18n-ph="fm_email" />
+      <select name="service" id="fService">
+        <option value="New construction" data-i18n="s1">New construction</option>
+        <option value="Renovation / maintenance" data-i18n="s2">Renovation / maintenance</option>
+        <option value="Road works" data-i18n="s3">Road works</option>
+        <option value="Property development" data-i18n="s4">Property development</option>
+        <option value="Building materials" data-i18n="s5">Building materials</option>
       </select>
-      <textarea name="message" placeholder="Tell us about your project" required></textarea>
-      <button type="submit" class="btn btn-gold">Send Message</button>
+      <textarea name="message" id="fMsg" placeholder="Tell us about your project" data-i18n-ph="fm_msg" required></textarea>
+      <button type="submit" class="btn btn-wa">
+        <svg viewBox="0 0 32 32"><path d="M16 3C8.8 3 3 8.8 3 16c0 2.3.6 4.5 1.7 6.4L3 29l6.8-1.8A13 13 0 0 0 16 29c7.2 0 13-5.8 13-13S23.200 3 16 3zm0 23.700c-2 0-3.900-.6-5.500-1.600l-.4-.2-4 1 1.100-3.900-.3-.4A10.600 10.600 0 1 1 16 26.700zm5.800-7.900c-.3-.2-1.900-.9-2.200-1-.3-.1-.5-.2-.7.200-.2.300-.8 1-1 1.200-.2.200-.4.200-.7.100-.3-.2-1.400-.5-2.600-1.600-1-.9-1.600-1.900-1.800-2.200-.2-.3 0-.5.100-.7l.5-.5c.1-.2.200-.3.300-.5.100-.2.100-.4 0-.6-.1-.2-.7-1.700-1-2.300-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.100-.9.400-.3.300-1.200 1.200-1.200 2.800s1.200 3.300 1.400 3.500c.2.200 2.400 3.700 5.800 5.100.8.400 1.500.600 2 .8.8.3 1.600.2 2.200.1.700-.1 1.900-.8 2.200-1.500.3-.8.300-1.400.2-1.500-.1-.2-.3-.3-.6-.4z"/></svg>
+        <span data-i18n="fm_send">Send via WhatsApp</span>
+      </button>
+      <p class="form-note" data-i18n="fm_note">Your message will open in WhatsApp, ready to send.</p>
     </form>
   </div>
 </section>
 
 <footer>
-  <div class="container">© 2026 <strong>SNB Engineering</strong>. Retaining Customers for Life.</div>
+  <div class="container">© 2026 <strong>BAPTA Engineering</strong>. <span data-i18n="ft">Retaining Customers for Life.</span></div>
 </footer>
 
+<!-- ===================== FLOATING BUTTONS ===================== -->
+<div class="fab">
+  <button type="button" class="top" id="toTop" aria-label="Back to top">↑</button>
+  <a href="tel:+255757755174" class="call" aria-label="Call BAPTA Engineering">
+    <svg viewBox="0 0 24 24"><path d="M6.600 10.800a15 15 0 0 0 6.600 6.600l2.200-2.200a1 1 0 0 1 1-.25c1.100.4 2.300.6 3.600.6a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.500a1 1 0 0 1 1 1c0 1.300.2 2.500.6 3.600a1 1 0 0 1-.25 1z"/></svg>
+  </a>
+  <a href="#" class="wa wa-link" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 32 32"><path d="M16 3C8.8 3 3 8.8 3 16c0 2.3.6 4.5 1.7 6.4L3 29l6.8-1.8A13 13 0 0 0 16 29c7.2 0 13-5.8 13-13S23.200 3 16 3zm0 23.700c-2 0-3.900-.6-5.500-1.600l-.4-.2-4 1 1.100-3.900-.3-.4A10.600 10.600 0 1 1 16 26.700zm5.800-7.900c-.3-.2-1.900-.9-2.200-1-.3-.1-.5-.2-.7.200-.2.300-.8 1-1 1.200-.2.200-.4.200-.7.100-.3-.2-1.400-.5-2.600-1.600-1-.9-1.600-1.900-1.800-2.200-.2-.3 0-.5.100-.7l.5-.5c.1-.2.200-.3.300-.5.100-.2.100-.4 0-.6-.1-.2-.7-1.700-1-2.300-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.100-.9.400-.3.300-1.200 1.200-1.200 2.800s1.200 3.300 1.400 3.500c.2.200 2.400 3.700 5.800 5.100.8.400 1.500.600 2 .8.8.3 1.600.2 2.200.1.700-.1 1.900-.8 2.200-1.500.3-.8.300-1.400.2-1.500-.1-.2-.3-.3-.6-.4z"/></svg>
+  </a>
+</div>
+
+<!-- ===================== LIGHTBOX ===================== -->
+<div class="lightbox" id="lb" aria-hidden="true">
+  <button class="lb-btn lb-close" id="lbClose" aria-label="Close">×</button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous">‹</button>
+  <img id="lbImg" src="" alt="" />
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Next">›</button>
+  <p id="lbCap"></p>
+</div>
+
+<script src="js/script.js"></script>
 </body>
 </html>
